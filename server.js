@@ -2,7 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan') // middleware to view logs
 const dbConnection = require('./config/database')
-const router = require('./routes/categoryRoute')
+const categoryRoute = require('./routes/categoryRoute')
 
 dotenv.config({ path: 'config.env' });
 
@@ -20,7 +20,8 @@ if (process.env.NODE_ENV ==="development"){
 }
 
 
-app.use(router)
+app.use('/api/v1/categories',categoryRoute)
+
 
 // Server Connections 
 PORT=process.env.PORT
